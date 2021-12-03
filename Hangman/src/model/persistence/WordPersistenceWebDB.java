@@ -19,28 +19,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class WordPersistenceWebDB implements IWordPersistence {
-	// one instance, reuse
-	private static final HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
 
-//	public static void main(String[] args) throws IOException, InterruptedException {
-//		var wb = new WordPersistenceWebDB();
-//
-//		wb.addWord("MyWord3");
-//	}
+	private static final HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
 
 	@Override
 	public void addWord(String word) {
-//		System.out.println(word);
-		// json formatted data
 		String json = new StringBuilder().append("{").append("\"word\":\"" + word + "\"")
 				.append("}").toString();
-
 		HttpRequest request = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(json))
 				.uri(URI.create("http://localhost/php_rest_api/api/post/post.php")).build();
 		try {
 			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-			// print response body
-//			System.out.println(response.body());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -54,9 +43,6 @@ public class WordPersistenceWebDB implements IWordPersistence {
 				.uri(URI.create("http://localhost/php_rest_api/api/post/read.php?req=getWord")).build();
 		try {
 			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-			// print status code
-//			System.out.println(response.statusCode());
-			// print response body
 			String json = response.body();
 			System.out.println(json);
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -65,7 +51,6 @@ public class WordPersistenceWebDB implements IWordPersistence {
 				map = objectMapper.readValue(json, new TypeReference<Map<String, Object>>() {
 				});
 				Object wordMap = map.get("data");
-
 				List<String> words = (List<String>) wordMap;
 				word = words.get(new Random().nextInt(words.size()));
 			} catch (Exception e) {
