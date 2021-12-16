@@ -1,8 +1,5 @@
 package model;
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 public class Word {
 	private char[] word;
 	private boolean[] guessedLetters;

@@ -118,16 +118,12 @@ public class MainFrame extends JFrame {
 
 	}
 	public String getWordFromUser() {
-		String text = "";
-		text = JOptionPane.showInputDialog(this,"Bitte Wort eingeben", "Wortauswahl",
+		return JOptionPane.showInputDialog(this,"Bitte Wort eingeben", "Wortauswahl",
 				JOptionPane.QUESTION_MESSAGE);
-		return text;
 	}
 
 	public int askUserForGUISupplier() {
-		int auswahl = JOptionPane.showConfirmDialog(this, "Wort eingeben?", "Datenquelle GUI?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		System.out.println(auswahl);
-		return auswahl; 
+		return JOptionPane.showConfirmDialog(this, "Wort eingeben?", "Datenquelle GUI?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); 
 	}
 
 	

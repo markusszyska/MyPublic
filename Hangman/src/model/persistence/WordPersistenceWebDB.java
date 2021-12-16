@@ -37,7 +37,7 @@ public class WordPersistenceWebDB implements IWordPersistence {
 		try {
 			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 			String json = response.body();
-			System.out.println(json);
+//			System.out.println(json);
 			ObjectMapper objectMapper = new ObjectMapper();
 			Map<String, Object> map;
 			try {
