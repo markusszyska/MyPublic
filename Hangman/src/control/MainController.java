@@ -1,8 +1,6 @@
 package control;
 
-import static model.enums.EPersistenceType.DB;
-import static model.enums.EPersistenceType.FILE;
-import static model.enums.EPersistenceType.WEBDB;
+import static model.enums.EPersistenceType.*;
 
 import java.awt.event.ActionEvent;
 
@@ -52,6 +50,8 @@ public class MainController {
 		this.getFrame().addActionListenerToMenuBarNewWordFile(this::addWordTextFilePressed);
 		this.getFrame().addActionListenerToMenuBarNewWordDB(this::addWordDBPressed);
 		this.getFrame().addActionListenerToMenuBarNewWordWebDB(this::addWordWebDBPressed);
+		this.getFrame().addActionListenerToMenuBarNewWordSpringApi(this::addWordSpringApiPressed);
+		
 		if (this.getFrame().askUserForGUISupplier() != 0) {
 			EPersistenceType persistenceType = this.getFrame().selectWordSupplier();
 			this.setPersistenceType(persistenceType);
@@ -121,5 +121,8 @@ public class MainController {
 		String word = this.getFrame().getWordFromUser();
 		this.getModel().addWordToPersistence(WEBDB, word);
 	}
-
+	private void addWordSpringApiPressed(ActionEvent e) {
+		String word = this.getFrame().getWordFromUser();
+		this.getModel().addWordToPersistence(SPRINGAPI, word);
+	}
 }

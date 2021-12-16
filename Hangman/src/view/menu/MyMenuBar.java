@@ -12,7 +12,7 @@ public class MyMenuBar extends JMenuBar {
 	private JMenuItem newWordMIFile;
 	private JMenuItem newWordMIDb;
 	private JMenuItem newWordMIWebDb;
-
+	private JMenuItem newWordMISpringApi;
 	public JMenu getDatei() {
 		return datei;
 	}
@@ -52,6 +52,14 @@ public class MyMenuBar extends JMenuBar {
 	public void setNewWordMIWebDb(JMenuItem newWordMIWebDb) {
 		this.newWordMIWebDb = newWordMIWebDb;
 	}
+	
+	public JMenuItem getNewWordMISpringApi() {
+		return newWordMISpringApi;
+	}
+
+	public void setNewWordMISpringApi(JMenuItem newWordMISpringApi) {
+		this.newWordMISpringApi = newWordMISpringApi;
+	}
 
 	public MyMenuBar() {
 		this.setDatei(new JMenu("Datei"));
@@ -59,12 +67,14 @@ public class MyMenuBar extends JMenuBar {
 		this.setNewWordMIDb(new JMenuItem("Datei DB"));
 		this.setNewWordMIFile(new JMenuItem("Textdatei"));
 		this.setNewWordMIWebDb(new JMenuItem("Web Datenbank"));
+		this.setNewWordMISpringApi(new JMenuItem("Spring API"));
 		
 		this.add(this.getDatei());
 		this.getDatei().add(this.getNewWordM());
 		this.getNewWordM().add(this.getNewWordMIFile());
 		this.getNewWordM().add(this.getNewWordMIDb());
 		this.getNewWordM().add(this.getNewWordMIWebDb());
+		this.getNewWordM().add(this.getNewWordMISpringApi());
 	}
 
 	public void addActionListenerToMenuBarNewWordFile(ActionListener al) {
@@ -77,5 +87,9 @@ public class MyMenuBar extends JMenuBar {
 
 	public void addActionListenerToMenuBarNewWordWebDB(ActionListener al) {
 		this.getNewWordMIWebDb().addActionListener(al);		
+	}
+
+	public void addActionListenerToMenuBarNewWordSpringApi(ActionListener al) {
+		this.getNewWordMISpringApi().addActionListener(al);		
 	}
 }

@@ -4,6 +4,7 @@ import model.enums.EPersistenceType;
 import model.persistence.IWordPersistence;
 import model.persistence.WordPersistenceDB;
 import model.persistence.WordPersistenceFile;
+import model.persistence.WordPersistenceSpringApi;
 import model.persistence.WordPersistenceWebDB;
 
 public class MainModel {
@@ -72,6 +73,9 @@ public class MainModel {
 		case WEBDB:
 			this.setWordPersistence(new WordPersistenceWebDB());
 			break;
+		case SPRINGAPI:
+			this.setWordPersistence(new WordPersistenceSpringApi());
+			break;
 		}
 	}
 
@@ -86,8 +90,10 @@ public class MainModel {
 		case WEBDB:
 			this.setWordPersistence(new WordPersistenceWebDB());
 			break;
+		case SPRINGAPI:
+			this.setWordPersistence(new WordPersistenceSpringApi());
+			break;
 		}
-
 		this.getWordPersistence().addWord(word);
 	}
 

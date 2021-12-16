@@ -113,7 +113,10 @@ public class MainFrame extends JFrame {
 		this.getMyMenuBar().addActionListenerToMenuBarNewWordWebDB(al);
 		
 	}
+	public void addActionListenerToMenuBarNewWordSpringApi(ActionListener al) {
+		this.getMyMenuBar().addActionListenerToMenuBarNewWordSpringApi(al);
 
+	}
 	public String getWordFromUser() {
 		String text = "";
 		text = JOptionPane.showInputDialog(this,"Bitte Wort eingeben", "Wortauswahl",
@@ -126,5 +129,7 @@ public class MainFrame extends JFrame {
 		System.out.println(auswahl);
 		return auswahl; 
 	}
+
+	
 
 }

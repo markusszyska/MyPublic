@@ -11,16 +11,18 @@ import java.util.Random;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class WordPersistenceWebDB implements IWordPersistence {
-
+public class WordPersistenceSpringApi implements IWordPersistence {
+	
+	
 	private static final HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
-
 	@Override
 	public void addWord(String word) {
 		String json = new StringBuilder().append("{").append("\"word\":\"" + word + "\"")
 				.append("}").toString();
-		HttpRequest request = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(json))
-				.uri(URI.create("http://localhost/php_rest_api/api/post/post.php")).build();
+		HttpRequest request = HttpRequest.newBuilder()
+				.header("Content-Type", "application/json")
+				.POST(HttpRequest.BodyPublishers.ofString(json))
+				.uri(URI.create("http://localhost:8080/word")).build();
 		try {
 			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 		} catch (Exception e) {
@@ -33,7 +35,7 @@ public class WordPersistenceWebDB implements IWordPersistence {
 	public String getWord() {
 		String word = "";
 		HttpRequest request = HttpRequest.newBuilder().GET()
-				.uri(URI.create("http://localhost/php_rest_api/api/post/read.php?req=getWord")).build();
+				.uri(URI.create("http://localhost:8080/word/getAll")).build();
 		try {
 			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 			String json = response.body();
