@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
 		this.setTitle("Hangman");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setBounds(2000, 300, 1024, 768);
@@ -101,31 +101,36 @@ public class MainFrame extends JFrame {
 	}
 
 	public void addActionListenerToMenuBarNewWordFile(ActionListener al) {
-		this.getMyMenuBar().addActionListenerToMenuBarNewWordFile(al);	
+		this.getMyMenuBar().addActionListenerToMenuBarNewWordFile(al);
 	}
 
 	public void addActionListenerToMenuBarNewWordDB(ActionListener al) {
 		this.getMyMenuBar().addActionListenerToMenuBarNewWordDB(al);
-		
+
 	}
 
 	public void addActionListenerToMenuBarNewWordWebDB(ActionListener al) {
 		this.getMyMenuBar().addActionListenerToMenuBarNewWordWebDB(al);
-		
-	}
-	public void addActionListenerToMenuBarNewWordSpringApi(ActionListener al) {
-		this.getMyMenuBar().addActionListenerToMenuBarNewWordSpringApi(al);
 
 	}
+
+	public void addActionListenerToMenuBarNewWordSpringApiJson(ActionListener al) {
+		this.getMyMenuBar().addActionListenerToMenuBarNewWordSpringApiJson(al);
+
+	}
+
+	public void addActionListenerToMenuBarNewWordSpringApiXml(ActionListener al) {
+		this.getMyMenuBar().addActionListenerToMenuBarNewWordSpringApiXml(al);
+
+	}
+
 	public String getWordFromUser() {
-		return JOptionPane.showInputDialog(this,"Bitte Wort eingeben", "Wortauswahl",
-				JOptionPane.QUESTION_MESSAGE);
+		return JOptionPane.showInputDialog(this, "Bitte Wort eingeben", "Wortauswahl", JOptionPane.QUESTION_MESSAGE);
 	}
 
 	public int askUserForGUISupplier() {
-		return JOptionPane.showConfirmDialog(this, "Wort eingeben?", "Datenquelle GUI?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); 
+		return JOptionPane.showConfirmDialog(this, "Wort eingeben?", "Datenquelle GUI?", JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE);
 	}
-
-	
 
 }

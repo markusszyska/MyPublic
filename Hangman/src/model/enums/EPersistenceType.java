@@ -1,5 +1,5 @@
 package model.enums;
 
 public enum EPersistenceType {
-	DB,FILE,WEBDB,SPRINGAPI
+	DB,FILE,WEBDB,SPRINGAPIJSON,SPRINGAPIXML
 }

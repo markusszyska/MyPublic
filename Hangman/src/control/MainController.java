@@ -50,8 +50,8 @@ public class MainController {
 		this.getFrame().addActionListenerToMenuBarNewWordFile(this::addWordTextFilePressed);
 		this.getFrame().addActionListenerToMenuBarNewWordDB(this::addWordDBPressed);
 		this.getFrame().addActionListenerToMenuBarNewWordWebDB(this::addWordWebDBPressed);
-		this.getFrame().addActionListenerToMenuBarNewWordSpringApi(this::addWordSpringApiPressed);
-		
+		this.getFrame().addActionListenerToMenuBarNewWordSpringApiJson(this::addWordSpringApiJsonPressed);
+		this.getFrame().addActionListenerToMenuBarNewWordSpringApiXml(this::addWordSpringApiXmlPressed);
 		if (this.getFrame().askUserForGUISupplier() != 0) {
 			EPersistenceType persistenceType = this.getFrame().selectWordSupplier();
 			this.setPersistenceType(persistenceType);
@@ -121,8 +121,12 @@ public class MainController {
 		String word = this.getFrame().getWordFromUser();
 		this.getModel().addWordToPersistence(WEBDB, word);
 	}
-	private void addWordSpringApiPressed(ActionEvent e) {
+	private void addWordSpringApiJsonPressed(ActionEvent e) {
 		String word = this.getFrame().getWordFromUser();
-		this.getModel().addWordToPersistence(SPRINGAPI, word);
+		this.getModel().addWordToPersistence(SPRINGAPIJSON, word);
+	}
+	private void addWordSpringApiXmlPressed(ActionEvent e) {
+		String word = this.getFrame().getWordFromUser();
+		this.getModel().addWordToPersistence(SPRINGAPIXML, word);
 	}
 }

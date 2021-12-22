@@ -11,7 +11,7 @@ import java.util.Random;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
-public class WordPersistenceSpringApi implements IWordPersistence {
+public class WordPersistenceSpringApiJson implements IWordPersistence {
 	
 	private static final HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
 	
@@ -34,7 +34,9 @@ public class WordPersistenceSpringApi implements IWordPersistence {
 	@Override
 	public String getWord() {
 		String word = "";
-		HttpRequest request = HttpRequest.newBuilder().GET()
+		HttpRequest request = HttpRequest.newBuilder()
+				.header("Accept", "application/json")
+				.GET()
 				.uri(URI.create("http://localhost:8080/word/getAll")).build();
 		try {
 			HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());

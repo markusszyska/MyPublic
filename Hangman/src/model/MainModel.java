@@ -4,13 +4,13 @@ import model.enums.EPersistenceType;
 import model.persistence.IWordPersistence;
 import model.persistence.WordPersistenceDB;
 import model.persistence.WordPersistenceFile;
-import model.persistence.WordPersistenceSpringApi;
+import model.persistence.WordPersistenceSpringApiJson;
+import model.persistence.WordPersistenceSpringApiXml;
 import model.persistence.WordPersistenceWebDB;
 
 public class MainModel {
 
 	private Word theWord;
-//	private IWordSupplier wordSupplier;
 	private IWordPersistence wordPersistence;
 
 	public Word getTheWord() {
@@ -20,14 +20,6 @@ public class MainModel {
 	public void setTheWord(Word theWord) {
 		this.theWord = theWord;
 	}
-
-//	public IWordSupplier getWordSupplier() {
-//		return wordSupplier;
-//	}
-//
-//	public void setWordSupplier(IWordSupplier wordSupplier) {
-//		this.wordSupplier = wordSupplier;
-//	}
 
 	public IWordPersistence getWordPersistence() {
 		return wordPersistence;
@@ -73,8 +65,11 @@ public class MainModel {
 		case WEBDB:
 			this.setWordPersistence(new WordPersistenceWebDB());
 			break;
-		case SPRINGAPI:
-			this.setWordPersistence(new WordPersistenceSpringApi());
+		case SPRINGAPIJSON:
+			this.setWordPersistence(new WordPersistenceSpringApiJson());
+			break;
+		case SPRINGAPIXML:
+			this.setWordPersistence(new WordPersistenceSpringApiXml());
 			break;
 		}
 	}
@@ -90,8 +85,11 @@ public class MainModel {
 		case WEBDB:
 			this.setWordPersistence(new WordPersistenceWebDB());
 			break;
-		case SPRINGAPI:
-			this.setWordPersistence(new WordPersistenceSpringApi());
+		case SPRINGAPIJSON:
+			this.setWordPersistence(new WordPersistenceSpringApiJson());
+			break;
+		case SPRINGAPIXML:
+			this.setWordPersistence(new WordPersistenceSpringApiXml());
 			break;
 		}
 		this.getWordPersistence().addWord(word);
