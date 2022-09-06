@@ -7,12 +7,10 @@ import controller.MainController;
 public class App {
 
 	/*
-	 * Kommentar A
-	 * Kommentar B 
-	 * Kommentar DE
-	 */ 
+	 * Kommentar A Kommentar B Kommentar DE
+	 */
 
-	//Kommentar C
+	// Kommentar C
 	public static void main(String[] args) {
 
 //		FileHandler fh = new FileHandler();
@@ -40,18 +38,7 @@ public class App {
 //			System.out.println(artikel_liste.get(i));
 //		}
 
-
-
-
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				 new MainController();
-			}
-		});
+		EventQueue.invokeLater(()->new MainController());
 
 	}
 }
-
-
-
