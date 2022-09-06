@@ -8,7 +8,7 @@ public class App {
 
 	/*
 	 * Kommentar A
-	 * Kommentar B
+	 * Kommentar B 
 	 * Kommentar DE
 	 */ 
 
