@@ -9,6 +9,5 @@ public class App {
 		EventQueue.invokeLater(() -> {
 			new MainController();
 		});
-		//test
 	}
 }
