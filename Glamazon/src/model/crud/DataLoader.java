@@ -36,13 +36,8 @@ public class DataLoader {
 	public Sortiment getArtikelFromDataBase() {
 		Sortiment sortiment = new Sortiment();
 		Set<Artikel> artikelliste = new HashSet<>();
-
-		for(IDBConnection connection : this.getConnections()) {
-			artikelliste.addAll(connection.getAllArtikel());
-		}
-
+		this.getConnections().forEach(con->artikelliste.addAll(con.getAllArtikel()));
 		sortiment.setAlleArtikel(artikelliste);
-
 		return sortiment;
 	}
 }
