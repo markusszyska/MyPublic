@@ -45,8 +45,4 @@ public class DataLoader {
 
 		return sortiment;
 	}
-//	public static void main(String[] args) {
-//		DataLoader dl = new DataLoader();
-//		dl.getArtikelFromDataBase().getAlleArtikel().forEach(item-> System.out.println(item + "\n"));
-//	}
 }
