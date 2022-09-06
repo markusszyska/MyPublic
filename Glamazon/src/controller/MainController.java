@@ -63,9 +63,7 @@ public class MainController {
 	private void addItemToCart(ActionEvent e) {
 		JButton source = (JButton)e.getSource();
 		ArtikelPanel parent = (ArtikelPanel)source.getParent();
-		String productName = parent.getLblProductName().getText();
-		Integer anzahl = (Integer)parent.getSpinner().getValue();
-		this.getModel().addItemToCart(productName, anzahl);
+		this.getModel().addItemToCart(parent.getLblProductName().getText(), (Integer)parent.getSpinner().getValue());
 		this.getMainView().aktualisiereWarenKorbView(this.getModel().getWarenkorb());		
 	}
 	

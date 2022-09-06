@@ -1,12 +1,12 @@
 package model.data;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
 
 public class Artikel {
-	// Attribute (immer private!)
 	private int artikelId;
 	private String artName;
 	private String artBeschreibung;
@@ -15,8 +15,6 @@ public class Artikel {
 	private Set<String> kategorien;
 	private int mwst;
 
-	// getter & setter (Stichwort: Encapsulation / Information Hiding,
-	// Datenkapselung)
 	public int getArtikelId() {
 		return artikelId;
 	}
@@ -73,10 +71,8 @@ public class Artikel {
 		this.mwst = mwst;
 	}
 
-	// Konstruktor(en) / Kaskadierender Aufruf
-	// Maximal-Konstruktor
-	public Artikel(int id, String name, String beschreibung, double preis,
-			ImageIcon icon, Set<String> kategorien, int mwst) {
+	public Artikel(int id, String name, String beschreibung, double preis, ImageIcon icon, Set<String> kategorien,
+			int mwst) {
 		this.setArtikelId(id);
 		this.setArtName(name);
 		this.setArtBeschreibung(beschreibung);
@@ -98,64 +94,39 @@ public class Artikel {
 		this("");
 	}
 
-	// Standard-Methoden
 	@Override
 	public String toString() {
 		return "Artikel [getArtikelId()=" + getArtikelId() + ", getArtName()=" + getArtName()
 				+ ", getArtBeschreibung()=" + getArtBeschreibung() + ", getPreis()=" + getPreis() + ", getBild()="
 				+ getIcon() + ", getKategorien()=" + getKategorien() + ", getMwst()=" + getMwst() + "]";
 	}
-
-	public boolean equals(Artikel artikel) {
-		boolean ergebnis = false;
-		if(
-			this.getArtikelId() == artikel.getArtikelId() &&
-			this.getArtName().equals(artikel.getArtName()) &&
-			this.getArtBeschreibung().equals(artikel.getArtBeschreibung()) &&
-			this.getMwst() == artikel.getMwst()
-		) {
-			ergebnis = true;
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return ergebnis;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Artikel artikel = (Artikel) obj;
+		return this.getArtikelId() == artikel.getArtikelId() && this.getArtName().equals(artikel.getArtName())
+				&& this.getArtBeschreibung().equals(artikel.getArtBeschreibung())
+				&& this.getMwst() == artikel.getMwst();
 	}
 
 	@Override
-	public Artikel clone() {
-		return new Artikel(
-				this.getArtikelId(),
-				this.getArtName(),
-				this.getArtBeschreibung(),
-				this.getPreis(),
-				this.getIcon(),
-				this.getKategorien(),
-				this.getMwst()
-		);
+	public int hashCode() {
+		return Objects.hash(artBeschreibung, artName, artikelId, icon, kategorien, mwst, preis);
 	}
 
 
-//	@Override
-//	public boolean equals(Object obj) {
-//		boolean ergebnis = false;
-//		if(this == obj) {
-//			return true;
-//		}
-//
-//		if(obj instanceof Artikel) {
-//
-//			Artikel artikel = (Artikel) obj;
-//			if(
-//					this.getArtikelId() == artikel.getArtikelId() &&
-//					this.getArtName().equals(artikel.getArtName()) &&
-//					this.getArtBeschreibung().equals(artikel.getArtBeschreibung()) &&
-//					this.getMwst() == artikel.getMwst()
-//				) {
-//					ergebnis = true;
-//				}
-//		}
-//
-//		return ergebnis;
-//	}
+	@Override
+	public Artikel clone() {
+		return new Artikel(this.getArtikelId(), this.getArtName(), this.getArtBeschreibung(), this.getPreis(),
+				this.getIcon(), this.getKategorien(), this.getMwst());
+	}
 
-	// Funktionalität
 
 }

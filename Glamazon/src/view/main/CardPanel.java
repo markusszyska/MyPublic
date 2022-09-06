@@ -2,7 +2,7 @@ package view.main;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.util.Set;
 
 import javax.swing.JPanel;
 
@@ -76,7 +76,7 @@ public class CardPanel extends JPanel {
 	public void addActionListenerToBtnKasse(ActionListener al) {
 		this.getCartPanel().addActionListenerToBtnKasse(al);
 	}
-	public void displayArtikel(List<Artikel> artikel) {
+	public void displayArtikel(Set<Artikel> artikel) {
 		this.getShoppingPanel().displayArtikel(artikel);
 		
 	}

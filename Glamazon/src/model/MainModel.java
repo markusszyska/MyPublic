@@ -39,52 +39,25 @@ public class MainModel {
 		this.setWarenkorb(new Warenkorb());
 	}
 
-	public List<Artikel> filterSortimentKategorie(String kategorie) {
-		List<Artikel> alleArtikel = new ArrayList<>(this.getSortiment().getAlleArtikel());
-
-		Predicate<Artikel> pred = artikel -> !artikel.getKategorien().contains(kategorie);
-		alleArtikel.removeIf(pred);
-
+	public Set<Artikel> filterSortimentKategorie(String kategorie) {
+		Set<Artikel> alleArtikel = new HashSet<>(this.getSortiment().getAlleArtikel());
+		alleArtikel.removeIf(artikel -> !artikel.getKategorien().contains(kategorie));
 		return alleArtikel;
 	}
 
 	public Set<String> getAlleKategorien() {
 		Set<String> kat = new HashSet<>();
-//		Consumer<Artikel> con = new Consumer<Artikel>() {
-//			@Override
-//			public void accept(Artikel t) {
-//				kat.addAll(t.getKategorien());
-//			}
-//		};
-		Consumer<Artikel> con = artikel -> kat.addAll(artikel.getKategorien());
-		this.getSortiment().getAlleArtikel().forEach(con);
+		this.getSortiment().getAlleArtikel().forEach(artikel -> kat.addAll(artikel.getKategorien()));
 		return kat;
 	}
 
-	public List<Artikel> getAlleArtikel() {
+	public Set<Artikel> getAlleArtikel() {
 		return this.getSortiment().getAlleArtikel();
 	}
 
 	public void addItemToCart(String productName, Integer anzahl) {
-//		System.out.println(anzahl + " " + productName + " wurde dem Warenkorb hinzugefuegt");
-		//Pre Java 8
-//		Artikel result = null;
-//		for (Artikel a : this.getSortiment().getAlleArtikel()) {
-//			if (a.getArtName().equals(productName)) {
-//				result = a;				
-//			}
-//		}
-//		if(result != null && anzahl > 0) {
-//			this.getWarenkorb().fuegeArtikelEin(result, anzahl);
-//		}
-		//Ab Java 8
 		Optional<Artikel> opt = this.getSortiment().getAlleArtikel().stream().filter(a->a.getArtName().equals(productName)).findFirst();
 		if(opt.isPresent()&&anzahl>0)
 			this.getWarenkorb().fuegeArtikelEin(opt.get(), anzahl);
 	}
-
-//	public static void main(String[] args) {
-//		MainModel m = new MainModel();
-//		m.getSortiment().getAlleArtikel().forEach(a->System.out.println(a.getArtName() + " " + a.getKategorien()));
-//	}
 }

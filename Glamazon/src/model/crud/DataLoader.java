@@ -1,6 +1,8 @@
 package model.crud;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import model.data.Artikel;
 import model.data.Sortiment;
@@ -33,7 +35,7 @@ public class DataLoader {
 
 	public Sortiment getArtikelFromDataBase() {
 		Sortiment sortiment = new Sortiment();
-		ArrayList<Artikel> artikelliste = new ArrayList<>();
+		Set<Artikel> artikelliste = new HashSet<>();
 
 		for(IDBConnection connection : this.getConnections()) {
 			artikelliste.addAll(connection.getAllArtikel());

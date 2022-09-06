@@ -1,19 +1,20 @@
 package model.data;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Sortiment {
-	ArrayList<Artikel> alleArtikel;
+	Set<Artikel> alleArtikel;
 
-	public ArrayList<Artikel> getAlleArtikel() {
+	public Set<Artikel> getAlleArtikel() {
 		return alleArtikel;
 	}
 
-	public void setAlleArtikel(ArrayList<Artikel> alleArtikel) {
+	public void setAlleArtikel(Set<Artikel> alleArtikel) {
 		this.alleArtikel = alleArtikel;
 	}
 
 	public Sortiment() {
-		this.setAlleArtikel(new ArrayList<Artikel>());
+		this.setAlleArtikel(new HashSet<Artikel>());
 	}
 }

@@ -84,7 +84,7 @@ public class MainPanel extends JPanel {
 		this.getCardPanel().showKassePanel();
 	}
 
-	public void displayArtikel(List<Artikel> artikel) {
+	public void displayArtikel(Set<Artikel> artikel) {
 		this.getCardPanel().displayArtikel(artikel);
 
 	}

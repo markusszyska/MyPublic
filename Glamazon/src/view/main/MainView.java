@@ -84,7 +84,7 @@ public class MainView extends JFrame {
 		this.getMainPanel().showKassePanel();
 	}
 
-	public void displayArtikel(List<Artikel> artikel) {
+	public void displayArtikel(Set<Artikel> artikel) {
 		this.getMainPanel().displayArtikel(artikel);
 	}
 

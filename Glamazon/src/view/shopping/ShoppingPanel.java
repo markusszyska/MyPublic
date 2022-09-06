@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -58,30 +59,7 @@ public class ShoppingPanel extends JPanel {
 
 	}
 
-//	public void showSearchResults(String bild,String name, String productText, double preis) {
-//		this.getArtikelList().clear();
-//		if(bild.equals("Kat1 ")) {
-//			for (int i = 0; i < 5; i++) {
-//				this.getArtikelList().add(new ArtikelPanel(bild + " " + i, name + " " + i, productText + " " + i, preis));
-//			}
-//		}else if(bild.equals("Kat2 ")) {
-//			for (int i = 0; i < 18; i++) {
-//				this.getArtikelList().add(new ArtikelPanel(bild + " " + i, name + " " + i, productText + " " + i, preis));
-//			}
-//		}
-//		//Alle ArtikelPanel entfernen
-//		this.getDisplayPanel().removeAll();
-//		//Dem AnzeigePanel ein neues GridLayout geben, da so viele Zeilen benoetigt werden,
-//		//wie Panels in der Liste sind.
-//		this.getDisplayPanel().setLayout(new GridLayout(this.getArtikelList().size(), 1));
-//		//Dem AnzeigePanel die Artikelpanel hinzufuegen.
-//		this.getArtikelList().forEach(item->this.getDisplayPanel().add(item));
-//		//Das Anzeigepanel muss neu gemalt werden.
-//		this.revalidate();
-//		this.repaint();
-//	}
-
-	public void displayArtikel(List<Artikel> artikel) {
+	public void displayArtikel(Set<Artikel> artikel) {
 		this.getArtikelList().clear();
 		artikel.forEach(item->{this.getArtikelList().add(new ArtikelPanel(item.getIcon(), item.getArtName(), item.getArtBeschreibung(), item.getPreis()));});
 		this.getDisplayPanel().removeAll();
