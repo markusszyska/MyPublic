@@ -1,12 +1,18 @@
-package com.szyska.employeeAPI.data;
+package com.szyska.employeeAPI.data.employee;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.szyska.employeeAPI.data.adress.Adress;
 
 @Entity
 @Table(name = "employee")
@@ -21,6 +27,7 @@ public class Employee implements Serializable {
 	private String firstname;
 	private String lastname;
 
+	
 	public int getId() {
 		return id;
 	}
@@ -45,4 +52,6 @@ public class Employee implements Serializable {
 		this.lastname = lastname;
 	}
 
+
+	
 }

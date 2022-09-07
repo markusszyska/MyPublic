@@ -1,4 +1,4 @@
-package com.szyska.employeeAPI.data;
+package com.szyska.employeeAPI.data.adress;
 
 import java.util.List;
 
@@ -10,25 +10,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.szyska.employeeAPI.data.employee.Employee;
+
 @RestController
 @RequestMapping
-public class EmployeeController {
+public class AdressConroller {
 	
 	@Autowired
-	EmployeeRepository employeeRepo;
+	AdressRepository adressRepo; 
 	
-	@GetMapping(path="/getAllEmployees", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Employee> getAllEmployees() {
-		return employeeRepo.findAll();
+	@GetMapping("/adress")
+	public List<Adress> test(){
+		return adressRepo.findAll();
 	}
 	
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void addEmployeeToDatabase(@RequestBody Employee employee) {
+	@PostMapping(path="/addAdress", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void addAdressToDatabase(@RequestBody Adress adress) {
 		try {
-			this.employeeRepo.save(employee);
+			this.adressRepo.save(adress);
 		}catch(Exception e){
 			 
 		}
 	}
-	
 }
