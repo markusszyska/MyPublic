@@ -22,7 +22,7 @@ public class EmployeeController {
 		return employeeRepo.findAll();
 	}
 	
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path="/addEmployee",consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void addEmployeeToDatabase(@RequestBody Employee employee) {
 		try {
 			this.employeeRepo.save(employee);
