@@ -25,6 +25,7 @@ public class Adress implements Serializable{
 	private String nr;
 	
 	
+	
 	public int getId() {
 		return id;
 	}

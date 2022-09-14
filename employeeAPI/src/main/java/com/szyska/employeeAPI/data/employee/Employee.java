@@ -1,18 +1,17 @@
 package com.szyska.employeeAPI.data.employee;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.szyska.employeeAPI.data.adress.Adress;
+import com.szyska.employeeAPI.data.department.Department;
 
 @Entity
 @Table(name = "employee")
@@ -26,7 +25,10 @@ public class Employee implements Serializable {
 	private int id;
 	private String firstname;
 	private String lastname;
-
+	
+	@ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)
+	@JoinColumn(name="d_id", nullable = false)
+	private Department department;
 	
 	public int getId() {
 		return id;
@@ -52,6 +54,14 @@ public class Employee implements Serializable {
 		this.lastname = lastname;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
 
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	
 	
 }
